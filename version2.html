@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>UNILAB - SIGAA (Acessível)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Barra superior */
+    header {
+      background: #2f4a7d;
+      color: white;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    header .status {
+      font-size: 0.9rem;
+    }
+
+    /* Barra secundária */
+    .sub-header {
+      background: #d9e1f2;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Layout principal */
+    .container {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    nav {
+      width: 250px;
+      background: #e0e6f0;
+      border-right: 2px solid #ccc;
+      padding: 0.5rem;
+    }
+
+    nav h2 {
+      font-size: 1.1rem;
+      background: #2f4a7d;
+      color: #fff;
+      padding: 0.5rem;
+      margin: 0;
+      border-radius: 4px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0.2rem 0;
+    }
+
+    nav button {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    nav button:hover,
+    nav button:focus {
+      background: #c7d4ec;
+      outline: 2px solid #2f4a7d;
+    }
+
+    .submenu {
+      margin-left: 1rem;
+      display: none;
+    }
+
+    .submenu[aria-hidden="false"] {
+      display: block;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 1rem;
+      background: #f5f5f5;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    a {
+      color: #2f4a7d;
+    }
+
+    a:focus {
+      outline: 2px dashed #2f4a7d;
+      outline-offset: 2px;
+    }
+
+    /* Menu lateral direito */
+    aside {
+      width: 300px;
+      background: #eef2f8;
+      border-left: 2px solid #ccc;
+      padding: 1rem;
+      display: none;
+    }
+
+    aside[aria-hidden="false"] {
+      display: block;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      right: 0;
+      top: 6rem;
+      background: #2f4a7d;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .menu-toggle:focus {
+      outline: 2px solid yellow;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra superior -->
+  <header role="banner">
+    <h1>UNILAB - SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
+    <div class="status">
+      <span id="hora">14:53:03</span> | Tempo de Sessão: <span id="tempo">00:27</span> 
+      <a href="#" style="color:white; margin-left:1rem;">SAIR</a>
+    </div>
+  </header>
+
+  <!-- Barra secundária -->
+  <div class="sub-header">
+    <div>
+      DAUTARIM OSVALDO C. ANDRELINO | Alterar Vínculo <br>
+      INSTITUTO DE ENGENHARIAS E DESENVOLVIMENTO SUSTENTÁVEL (10.14) - Semestre atual: 2025.2
+    </div>
+    <div>
+      EEN122 - CONTROLE E SERVOMECANISMO - T01 (2025.2 - 24T12) | 
+      <a href="#">Trocar de Turma</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Menu esquerdo -->
+    <nav aria-label="Menu Turma Virtual">
+      <h2>Menu Turma Virtual</h2>
+      <ul>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu1">Turma</button>
+          <ul id="submenu1" class="submenu" aria-hidden="true">
+            <li><a href="#">Principal</a></li>
+            <li><a href="#">Gerenciar Perfil</a></li>
+            <li><a href="#">Plano de Curso</a></li>
+            <li><a href="#">Participantes</a></li>
+            <li><a href="#">Visualizar Programa</a></li>
+            <li><a href="#">Fóruns</a></li>
+            <li><a href="#">Notícias</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </li>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu2">Alunos</button>
+          <ul id="submenu2" class="submenu" aria-hidden="true">
+            <li><a href="#">Materiais</a></li>
+            <li><a href="#">Atividades</a></li>
+            <li><a href="#">Estatística</a></li>
+            <li><a href="#">Ajuda</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo">
+      <div class="card" role="status">
+        <p><strong>Última Notícia:</strong> 1ª Avaliação Parcial - 30/09/2025 18:51</p>
+        <p>Prezada turma, boa noite.<br>
+        Apenas para lembrá-los da nossa 1ª AP amanhã, dia 01/10.<br>
+        Cordialmente, Profa. Lígia.</p>
+      </div>
+
+      <div class="card">
+        <h3>Apresentação da Disciplina (28/07/2025)</h3>
+        <a href="#">📄 Aula1_ApresentacaoDisciplina_ControleServo.pdf</a>
+      </div>
+
+      <div class="card">
+        <h3>Introdução aos Sistemas de Controle (30/07/2025)</h3>
+        <a href="#">📄 Aula1_IntroSistemasControle.pdf</a>
+      </div>
+
+      <div class="card">
+        <h3>Modelagem matemática de sistemas de controle (04/08/2025 - 06/08/2025)</h3>
+        <a href="#">📄 Aula2_ModelagemMatemSistControleEditado.pdf</a>
+      </div>
+
+      <div class="card">
+        <h3>Resposta transitória e estacionária (11/08/2025 - 27/08/2025)</h3>
+        <a href="#">📄 Aula4_AnaliseRespTransitoriaERegEstacionario.pdf</a>
+      </div>
+    </main>
+
+    <!-- Menu direito -->
+    <aside id="menuDireito" role="complementary" aria-label="Menu Lateral Direito" aria-hidden="true">
+      <h2>Notícias</h2>
+      <ul>
+        <li>30/09/2025 18:51 - 1ª Avaliação Parcial</li>
+        <li>11/08/2025 13:07 - Aula 11/08</li>
+      </ul>
+
+      <h2>Enquete</h2>
+      <p>Nenhuma enquete encontrada</p>
+
+      <h2>Atividades</h2>
+      <ul>
+        <li>30/09 Nova Notícia: 1ª Avaliação Parcial</li>
+        <li>11/08 Nova Notícia: Aula 11/08</li>
+      </ul>
+
+      <h2>Avaliações</h2>
+      <p>Nenhuma avaliação cadastrada</p>
+    </aside>
+  </div>
+
+  <!-- Botão para abrir/fechar menu direito -->
+  <button id="toggleMenu" class="menu-toggle" aria-controls="menuDireito" aria-expanded="false">
+    Abrir Menu
+  </button>
+
+  <script>
+    // Submenus do menu esquerdo
+    document.querySelectorAll("nav button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        const submenu = document.getElementById(btn.getAttribute("aria-controls"));
+        btn.setAttribute("aria-expanded", !expanded);
+        submenu.setAttribute("aria-hidden", expanded);
+      });
+    });
+
+    // Menu lateral direito
+    const toggleBtn = document.getElementById("toggleMenu");
+    const menuDireito = document.getElementById("menuDireito");
+
+    toggleBtn.addEventListener("click", () => {
+      const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+      toggleBtn.setAttribute("aria-expanded", !expanded);
+      menuDireito.setAttribute("aria-hidden", expanded);
+      toggleBtn.textContent = expanded ? "Abrir Menu" : "Fechar Menu";
+    });
+  </script>
+</body>
+</html>
