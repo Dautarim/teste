@@ -50,7 +50,10 @@
     }
 
     nav {
+      position: sticky;
+      top: 20px;
       width: 250px;
+      scroll-behavior: smooth;
       background: #e0e6f0;
       border-right: 2px solid #ccc;
       padding: 0.5rem;
@@ -61,8 +64,9 @@
       background: #2f4a7d;
       color: #fff;
       padding: 0.5rem;
+      font-weight: 500;
       margin: 0;
-      border-radius: 4px;
+      border-radius: 8px;
     }
 
     nav ul {
@@ -73,6 +77,20 @@
 
     nav li {
       margin: 0.2rem 0;
+      padding: 8px;
+      transition: .3s ease;
+      text-align: left;
+    }
+
+    nav ul.submenu{
+      padding-block: 4px ;
+    }
+
+    nav ul.submenu li:hover,
+    nav ul.submenu li:focus {
+      background: #c7d4ec;
+      outline: 2px solid #517fd4;
+      border-radius: 8px;
     }
 
     nav button {
@@ -80,6 +98,7 @@
       text-align: left;
       background: none;
       border: none;
+      border-radius: 8px;
       padding: 0.5rem;
       font-size: 1rem;
       cursor: pointer;
@@ -120,6 +139,15 @@
 
     a {
       color: #2f4a7d;
+    }
+
+    nav ul.submenu li{
+      border-bottom: 2px solid #2f4a7d;
+    }
+
+    nav ul.submenu li a {
+      text-decoration: none;
+      color: black;
     }
 
     a:focus {
@@ -184,6 +212,50 @@
     <nav aria-label="Menu Turma Virtual">
       <h2>Menu Turma Virtual</h2>
       <ul>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu1">Turma</button>
+          <ul id="submenu1" class="submenu" aria-hidden="true">
+            <li><a href="#">Principal</a></li>
+            <li><a href="#">Gerenciar Perfil</a></li>
+            <li><a href="#">Plano de Curso</a></li>
+            <li><a href="#">Participantes</a></li>
+            <li><a href="#">Visualizar Programa</a></li>
+            <li><a href="#">Fóruns</a></li>
+            <li><a href="#">Notícias</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </li>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu2">Alunos</button>
+          <ul id="submenu2" class="submenu" aria-hidden="true">
+            <li><a href="#">Materiais</a></li>
+            <li><a href="#">Atividades</a></li>
+            <li><a href="#">Estatística</a></li>
+            <li><a href="#">Ajuda</a></li>
+          </ul>
+        </li>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu1">Turma</button>
+          <ul id="submenu1" class="submenu" aria-hidden="true">
+            <li><a href="#">Principal</a></li>
+            <li><a href="#">Gerenciar Perfil</a></li>
+            <li><a href="#">Plano de Curso</a></li>
+            <li><a href="#">Participantes</a></li>
+            <li><a href="#">Visualizar Programa</a></li>
+            <li><a href="#">Fóruns</a></li>
+            <li><a href="#">Notícias</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </li>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu2">Alunos</button>
+          <ul id="submenu2" class="submenu" aria-hidden="true">
+            <li><a href="#">Materiais</a></li>
+            <li><a href="#">Atividades</a></li>
+            <li><a href="#">Estatística</a></li>
+            <li><a href="#">Ajuda</a></li>
+          </ul>
+        </li>
         <li>
           <button aria-expanded="false" aria-controls="submenu1">Turma</button>
           <ul id="submenu1" class="submenu" aria-hidden="true">
