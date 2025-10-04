@@ -4,253 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>UNILAB - SIGAA (Acessível)</title>
-    <style>
-      /* Skip link */
-      .skip-link {
-        position: absolute;
-        left: -9999px;
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      }
-      .skip-link:focus {
-        position: static;
-        width: auto;
-        height: auto;
-        padding: 0.5rem;
-        background: #fff;
-        border: 2px solid #2f4a7d;
-        z-index: 1000;
-      }
-
-      :root {
-        --blue: #2f4a7d;
-        --light: #e0e6f0;
-        --panel: #eef2f8;
-        --focus: 3px solid #ffbf47;
-      }
-
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f5f5f5;
-        color: #111;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      /* header */
-      header[role="banner"] {
-        background: var(--blue);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.6rem 1rem;
-        gap: 1rem;
-      }
-      header h1 {
-        font-size: 1rem;
-        margin: 0;
-        line-height: 1.1;
-      }
-      header .status {
-        font-size: 0.9rem;
-        display: flex;
-        gap: 0.75rem;
-        align-items: center;
-      }
-
-      .sub-header {
-        background: #d9e1f2;
-        padding: 0.6rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        border-bottom: 1px solid #cfcfcf;
-        font-size: 0.92rem;
-      }
-
-      .container {
-        display: flex;
-        flex: 1 1 auto;
-        gap: 1rem;
-        padding: 1rem;
-        align-items: flex-start;
-      }
-
-      /* nav (menu esquerdo) - altura fixa e scroll interno oculto */
-      nav[aria-label] {
-        width: 260px;
-        background: var(--light);
-        border-right: 2px solid #c9cfe0;
-        padding: 0.6rem;
-        position: sticky;
-        top: 1rem;
-        height: auto;
-        max-height: calc(100vh - 280px);
-        overflow-y: auto;
-        border-radius: 6px;
-      }
-      /* Hide scrollbar but keep scroll usable */
-      nav[aria-label] {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      nav[aria-label]::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-        background: transparent;
-      }
-
-      nav h2 {
-        margin: 0 0 0.5rem 0;
-        background: var(--blue);
-        color: #fff;
-        padding: 0.45rem 0.6rem;
-        border-radius: 6px;
-        font-size: 1rem;
-      }
-      nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      nav > ul > li {
-        margin-bottom: 0.25rem;
-      }
-      .menu-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 100%;
-        text-align: left;
-        background: transparent;
-        border: 0;
-        padding: 0.45rem 0.5rem;
-        cursor: pointer;
-        font-size: 0.95rem;
-        border-radius: 6px;
-      }
-      .menu-btn:focus {
-        outline: none;
-        box-shadow: var(--focus);
-        background: #eaf0ff;
-      }
-      .menu-btn .icon {
-        width: 20px;
-        display: inline-block;
-        text-align: center;
-      }
-
-      .submenu {
-        margin: 0.35rem 0 0 0.35rem;
-        padding: 0;
-        list-style: none;
-        display: none;
-        gap: 12px;
-      }
-      .submenu[aria-hidden="false"] {
-        display: block;
-      }
-      .submenu li {
-        width: 95%;
-        padding: 0.45rem 0.5rem;
-        border-radius: 6px;
-        margin-bottom: 0.2rem;
-        border-bottom: 1px solid rgba(47, 74, 125, 0.08);
-        background: #97b2ec;
-      }
-      .submenu li a {
-        color: #000000;
-        text-decoration: none;
-        display: block;
-        width: 100%;
-
-      }
-      .submenu li:focus {
-        outline: 2px solid #182949;
-        box-shadow: var(--focus);
-        background: transparent;
-      }
-
-      /* main content */
-      main#conteudo {
-        flex: 1 1 auto;
-        min-width: 320px;
-      }
-      .card {
-        background: #fff;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-        margin-bottom: 1rem;
-      }
-      .card h3 {
-        margin-top: 0;
-      }
-
-      /* aside (menu direito) */
-      aside#menuDireito {
-        width: 300px;
-        background: var(--panel);
-        border-left: 2px solid #c9cfe0;
-        padding: 1rem;
-        border-radius: 6px;
-        display: none;
-      }
-      aside#menuDireito[aria-hidden="false"] {
-        display: block;
-      }
-
-      /* toggle button */
-      .menu-toggle {
-        position: fixed;
-        right: 0;
-        top: 6.2rem;
-        background: var(--blue);
-        color: #fff;
-        border: 0;
-        padding: 0.45rem 0.8rem;
-        border-radius: 6px 0 0 6px;
-        cursor: pointer;
-      }
-      .menu-toggle:focus {
-        outline: none;
-        box-shadow: var(--focus);
-      }
-
-      a:focus {
-        outline: none;
-        box-shadow: var(--focus);
-        border-radius: 6px;
-      }
-
-      @media (max-width: 900px) {
-        .container {
-          flex-direction: column;
-        }
-        nav {
-          width: 100%;
-          position: static;
-          max-height: none;
-        }
-        aside#menuDireito {
-          width: 100%;
-        }
-        .menu-toggle {
-          right: 1rem;
-          top: auto;
-          bottom: 1rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
   </head>
   <body>
     <!-- Skip link -->
-    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+    <a href="#principal" class="skip-link">Pular para o conteúdo</a>
 
     <!-- Barra superior -->
     <header role="banner">
@@ -260,20 +26,28 @@
       <div class="status" aria-live="polite">
         <span id="hora" aria-hidden="true">14:53:03</span>
         <span>Tempo de Sessão: <strong id="tempo">00:27</strong></span>
-        <a href="#" style="color: #fff; text-decoration: underline">SAIR</a>
+        <a href="#" style="color: #fff">Log Off</a>
       </div>
     </header>
 
     <!-- Barra secundária -->
     <div class="sub-header">
       <div>
-        <strong>DAUTARIM OSVALDO C. ANDRELINO</strong> | Alterar vínculo<br />
+        <strong>DAUTARIM OSVALDO C. ANDRELINO</strong> <br />
         INSTITUTO DE ENGENHARIAS E DESENVOLVIMENTO SUSTENTÁVEL (10.14) -
-        Semestre atual: 2025.2
+        Semestre atual: <strong>2025.2</strong>
+        <a class="bot-alterar-vinculo" href="#"> Alterar vínculo </a>
       </div>
-      <div>
+      <div class="descricao-da-disciplina">
         <strong>EEN122 - CONTROLE E SERVOMECANISMO - T01</strong><br />
-        (2025.2 - 24T12) | <a href="#">Trocar de Turma</a>
+        (2025.2 - 24T12) 
+        <div class="menu-controle"> 
+          <a href="#" class="bot-alterar-vinculo">Trocar de Turma</a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-house"></i></a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-gear-six"></i></a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-printer"></i></a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-arrows-left-right"></i></a>
+        </div>
       </div>
     </div>
 
@@ -292,8 +66,8 @@
             >
               <span class="icon" aria-hidden="true">👥</span><span>Turma</span>
             </button>
-            <ul id="submenu-turma" class="submenu" aria-hidden="true">
-              <li><a href="#">Principal</a></li>
+            <ul id="submenu-turma" class="submenu" aria-hidden="false">
+              <li><a href="#"autofocus id="principal">Principal</a></li>
               <li><a href="#">Gerenciar Perfil</a></li>
               <li><a href="#">Plano de Curso</a></li>
               <li><a href="#">Participantes</a></li>
@@ -391,7 +165,7 @@
 
       <!-- Conteúdo principal (recolocado) -->
       <main id="conteudo" tabindex="-1">
-        <div class="card" role="status" aria-live="polite">
+        <div class="card noticias" role="status" aria-live="polite">
           <p>
             <strong>Última Notícia:</strong> 1ª Avaliação Parcial - 30/09/2025
             18:51
@@ -469,120 +243,9 @@
       aria-controls="menuDireito"
       aria-expanded="false"
     >
-      Abrir Menu
+      <i class="ph ph-caret-circle-left"></i>
     </button>
 
-    <script>
-      (function () {
-        // Ajuste dinâmico da altura do nav para evitar overflow da viewport em várias telas
-        const nav = document.querySelector("nav[aria-label]");
-        const header = document.querySelector('header[role="banner"]');
-        const subHeader = document.querySelector(".sub-header");
-
-        function setNavMaxHeight() {
-          if (!nav || !header || !subHeader) return;
-          const h =
-            window.innerHeight -
-            header.offsetHeight -
-            subHeader.offsetHeight -
-            48; // margem extra
-          nav.style.maxHeight = (h > 200 ? h : 200) + "px";
-        }
-        setNavMaxHeight();
-        window.addEventListener("resize", setNavMaxHeight);
-
-        // comportamento: só 1 submenu aberto; Escape fecha; ArrowDown abre e foca primeiro item
-        const menuButtons = Array.from(
-          document.querySelectorAll("nav .menu-btn[aria-controls]")
-        );
-        function closeAllExcept(exceptBtn) {
-          menuButtons.forEach((btn) => {
-            if (btn !== exceptBtn) {
-              btn.setAttribute("aria-expanded", "false");
-              const ctrl = btn.getAttribute("aria-controls");
-              if (ctrl) {
-                const el = document.getElementById(ctrl);
-                if (el) el.setAttribute("aria-hidden", "true");
-              }
-            }
-          });
-        }
-
-        menuButtons.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const isExpanded = btn.getAttribute("aria-expanded") === "true";
-            closeAllExcept(btn);
-            // toggle clicked
-            btn.setAttribute("aria-expanded", String(!isExpanded));
-            const ctrl = btn.getAttribute("aria-controls");
-            if (ctrl) {
-              const el = document.getElementById(ctrl);
-              if (el) el.setAttribute("aria-hidden", String(isExpanded));
-              // scroll submenu into view inside nav (so it becomes visible when expanded)
-              if (!isExpanded) {
-                setTimeout(() => {
-                  // prefer scrollIntoView on the submenu so nav's internal scroll shows it
-                  el &&
-                    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-                }, 120);
-              }
-            }
-          });
-
-          btn.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") {
-              btn.setAttribute("aria-expanded", "false");
-              const ctrl = btn.getAttribute("aria-controls");
-              if (ctrl) {
-                const el = document.getElementById(ctrl);
-                if (el) el.setAttribute("aria-hidden", "true");
-              }
-              btn.focus();
-            }
-            if (
-              (e.key === "ArrowDown" || e.key === "Down") &&
-              btn.getAttribute("aria-expanded") === "false"
-            ) {
-              e.preventDefault();
-              btn.click();
-              const ctrl = btn.getAttribute("aria-controls");
-              const el = ctrl ? document.getElementById(ctrl) : null;
-              if (el) {
-                const firstLink = el.querySelector("a, button");
-                if (firstLink) firstLink.focus();
-              }
-            }
-          });
-        });
-
-        // Close open submenu when clicking outside nav
-        document.addEventListener("click", (e) => {
-          if (!e.target.closest("nav")) {
-            closeAllExcept(null);
-          }
-        });
-
-        // Menu direito toggle
-        const toggleBtn = document.getElementById("toggleMenu");
-        const menuDireito = document.getElementById("menuDireito");
-        toggleBtn.addEventListener("click", () => {
-          const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
-          toggleBtn.setAttribute("aria-expanded", String(!expanded));
-          menuDireito.setAttribute("aria-hidden", String(expanded));
-          toggleBtn.textContent = expanded ? "Abrir Menu" : "Fechar Menu";
-        });
-
-        // Skip link focus behavior
-        const conteudo = document.getElementById("conteudo");
-        const skip = document.querySelector(".skip-link");
-        skip &&
-          skip.addEventListener("click", () => {
-            setTimeout(() => conteudo && conteudo.focus(), 50);
-          });
-
-        // small perf: recalc nav height after fonts/render
-        window.addEventListener("load", () => setTimeout(setNavMaxHeight, 120));
-      })();
-    </script>
+    <script src="vtnsc.js"></script>
   </body>
 </html>
