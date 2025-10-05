@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>UNILAB - SIGAA (Acessível)</title>
+    <link rel="stylesheet" href="style4.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  </head>
+  <body>
+    <!-- Skip link -->
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+    <!-- Barra superior -->
+    <header role="banner">
+      <h1>
+        UNILAB - SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas
+      </h1>
+      <div class="status" aria-live="polite">
+        <span id="hora" aria-hidden="true">14:53:03</span>
+        <span>Tempo de Sessão: <strong id="tempo">00:27</strong></span>
+        <a href="#" class="logoff">Log Off</a>
+      </div>
+    </header>
+
+    <!-- Barra secundária -->
+    <div class="sub-header">
+      <div>
+        <strong>DAUTARIM OSVALDO C. ANDRELINO</strong> <br />
+        INSTITUTO DE ENGENHARIAS E DESENVOLVIMENTO SUSTENTÁVEL (10.14) -
+        Semestre atual: <strong>2025.2</strong>
+        <a class="bot-alterar-vinculo" href="#"> Alterar vínculo </a>
+      </div>
+      <div class="descricao-da-disciplina">
+        <strong>EEN122 - CONTROLE E SERVOMECANISMO - T01</strong><br />
+        (2025.2 - 24T12) 
+        <div class="menu-controle"> 
+          <a href="#" class="bot-alterar-vinculo">Trocar de Turma</a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-house"></i></a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-gear-six"></i></a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-printer"></i></a>
+          <a href="#" class="bot2-alterar-vinculo"><i class="ph-fill ph-arrows-left-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Menu esquerdo -->
+      <nav aria-label="Menu Turma Virtual">
+        <h2>Menu Turma Virtual</h2>
+        <ul>
+          <!-- TURMA -->
+          <li>
+            <button
+              class="menu-btn"
+              aria-expanded="true"
+              aria-controls="submenu-turma"
+              id="btn-turma"
+            >
+              <span class="icon" aria-hidden="true">👥</span><span>Turma</span>
+            </button>
+            <ul id="submenu-turma" class="submenu" aria-hidden="false">
+              <li><a href="#" id="link-principal">Principal</a></li>
+              <li><a href="#">Gerenciar Perfil</a></li>
+              <li><a href="#">Plano de Curso</a></li>
+              <li><a href="#">Participantes</a></li>
+              <li><a href="#">Visualizar Programa</a></li>
+              <li><a href="#">Fóruns</a></li>
+              <li><a href="#">Notícias</a></li>
+              <li><a href="#">Twitter</a></li>
+            </ul>
+          </li>
+
+          <!-- ALUNOS -->
+          <li>
+            <button
+              class="menu-btn"
+              aria-expanded="false"
+              aria-controls="submenu-alunos"
+              id="btn-alunos"
+            >
+              <span class="icon" aria-hidden="true">📚</span><span>Alunos</span>
+            </button>
+            <ul id="submenu-alunos" class="submenu" aria-hidden="true">
+              <li><a href="#">Frequência</a></li>
+              <li><a href="#">Ver Grupo</a></li>
+              <li><a href="#">Ver Notas</a></li>
+            </ul>
+          </li>
+
+          <!-- MATERIAIS -->
+          <li>
+            <button
+              class="menu-btn"
+              aria-expanded="false"
+              aria-controls="submenu-materiais"
+              id="btn-materiais"
+            >
+              <span class="icon" aria-hidden="true">📁</span><span>Materiais</span>
+            </button>
+            <ul id="submenu-materiais" class="submenu" aria-hidden="true">
+              <li><a href="#">Conteúdo/Página web</a></li>
+              <li><a href="#">Referências</a></li>
+              <li><a href="#">Vídeos</a></li>
+              <li><a href="#">Arquivos</a></li>
+            </ul>
+          </li>
+
+          <!-- ATIVIDADES -->
+          <li>
+            <button
+              class="menu-btn"
+              aria-expanded="false"
+              aria-controls="submenu-atividades"
+              id="btn-atividades"
+            >
+              <span class="icon" aria-hidden="true">📝</span><span>Atividades</span>
+            </button>
+            <ul id="submenu-atividades" class="submenu" aria-hidden="true">
+              <li><a href="#">Avaliações</a></li>
+              <li><a href="#">Enquetes</a></li>
+              <li><a href="#" id="link-tarefas">Tarefas</a></li>
+              <li><a href="#">Questionários</a></li>
+            </ul>
+          </li>
+
+          <!-- ESTATÍSTICA -->
+          <li>
+            <button
+              class="menu-btn"
+              aria-expanded="false"
+              aria-controls="submenu-estatistica"
+              id="btn-estatistica"
+            >
+              <span class="icon" aria-hidden="true">📊</span><span>Estatística</span>
+            </button>
+            <ul id="submenu-estatistica" class="submenu" aria-hidden="true">
+              <li><a href="#">Situação dos Discentes</a></li>
+              <li><a href="#">Linha do Tempo</a></li>
+            </ul>
+          </li>
+
+          <!-- AJUDA (link simples) -->
+          <li>
+            <a
+              class="menu-btn"
+              href="#"
+              style="display: flex; align-items: center; gap: 0.5rem"
+            >
+              <span class="icon" aria-hidden="true">❓</span><span>Ajuda</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Conteúdo principal (recolocado) -->
+      <main id="conteudo" tabindex="-1" aria-live="polite" role="main">
+        <div class="card noticias" role="status" aria-live="polite">
+          <p>
+            <strong>Última Notícia:</strong> <br> 1ª Avaliação Parcial - 30/09/2025
+            18:51
+          </p>
+          <p>
+            Prezada turma, boa noite.<br />Apenas para lembrá-los da nossa 1ª AP
+            amanhã, dia 01/10.<br />Cordialmente, Profa. Lígia.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="aula">
+            <h3>Apresentação da Disciplina</h3>
+            <p>28/07/2025</p>
+          </div>
+          <div class="arquivo">
+            <p>📄 Aula1_ApresentacaoDisciplina_ControleServo</p>
+            <a href="#" aria-label="Baixar Aula 1 Apresentação Disciplina"
+              >BAIXAR PDF</a>
+          </div>
+        </div>
+
+        <!-- mais cards de exemplo... -->
+      </main>
+
+      <!-- Menu direito -->
+      <aside
+        id="menuDireito"
+        role="complementary"
+        aria-label="Menu Lateral Direito"
+        aria-hidden="true"
+      >
+        <h2>Notícias</h2>
+        <ul>
+          <li>30/09/2025 18:51 - 1ª Avaliação Parcial</li>
+          <li>11/08/2025 13:07 - Aula 11/08</li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- Botão para abrir/fechar menu direito -->
+    <button
+      id="toggleMenu"
+      class="menu-toggle"
+      aria-controls="menuDireito"
+      aria-expanded="false"
+      aria-label="Abrir menu lateral direito"
+    >
+      <i class="ph ph-caret-circle-left"></i>
+    </button>
+
+    <!-- live region para anúncios JS -->
+    <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="vtnsc4.js"></script>
+  </body>
+</html>
