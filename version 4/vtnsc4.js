@@ -159,7 +159,6 @@
         // titulo (focável)
         const titulo = document.createElement("h2");
         titulo.textContent = "Tarefas - Controle e Servomecanismo";
-        titulo.tabIndex = -1;
         titulo.style.color = "var(--blue)";
         titulo.style.marginBottom = "1rem";
         conteudo.appendChild(titulo);
@@ -183,7 +182,6 @@
         tarefas.forEach((tarefa, i) => {
           const card = document.createElement("article");
           card.className = "tarefa-card";
-          card.tabIndex = 0;
           card.innerHTML = `
             <div class="aula"><h3>${tarefa.nome}</h3></div>
             <p>${tarefa.descricao}</p>
@@ -191,7 +189,7 @@
               <button type="button" class="btn-submeter" data-tarefa="${i}" aria-label="Submeter ${tarefa.nome}">
                 <i class="ph-fill ph-check-circle" aria-hidden="true"></i> Submeter
               </button>
-              <label class="btn-arquivo" for="arquivo-${i}">
+              <label class="btn-arquivo" for="arquivo-${i}" tabindex="0">
                 <i class="ph-fill ph-upload-simple" aria-hidden="true"></i> Enviar arquivo
               </label>
               <input type="file" id="arquivo-${i}" class="input-arquivo" aria-label="Escolher arquivo para ${tarefa.nome}" />
