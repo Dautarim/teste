@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>UNILAB - SIGAA (Acessível)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+  <!-- Barra superior -->
+  <header role="banner">
+    <h1>UNILAB - SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
+    <div class="status">
+      <span id="hora">14:53:03</span> | Tempo de Sessão: <span id="tempo">00:27</span> 
+      <a href="#" style="color:white; margin-left:1rem;">SAIR</a>
+    </div>
+  </header>
+
+  <!-- Barra secundária -->
+  <div class="sub-header">
+    <div>
+      DAUTARIM OSVALDO C. ANDRELINO | Alterar Vínculo <br>
+      INSTITUTO DE ENGENHARIAS E DESENVOLVIMENTO SUSTENTÁVEL (10.14) - Semestre atual: 2025.2
+    </div>
+    <div>
+      EEN122 - CONTROLE E SERVOMECANISMO - T01 (2025.2 - 24T12) | 
+      <a href="#">Trocar de Turma</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Menu esquerdo -->
+    <nav aria-label="Menu Turma Virtual">
+      <h2>Menu Turma Virtual</h2>
+      <ul>
+        <li>
+          <button aria-expanded="false" aria-controls="submenu1">Turma</button>
+          <ul id="submenu1" class="submenu" aria-hidden="true">
+            <li><a href="#" id="link-principal" autofocus>Principal</a></li>
+            <li><a href="#">Gerenciar Perfil</a></li>
+            <li><a href="#">Plano de Curso</a></li>
+            <li><a href="#">Participantes</a></li>
+            <li><a href="#">Visualizar Programa</a></li>
+            <li><a href="#">Fóruns</a></li>
+            <li><a href="#">Notícias</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <button aria-expanded="false" aria-controls="submenu2">Atividades</button>
+          <ul id="submenu2" class="submenu" aria-hidden="true">
+            <li><a href="#" id="link-tarefas">Tarefas</a></li>
+            <li><a href="#">Enquetes</a></li>
+            <li><a href="#">Avaliações</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <button aria-expanded="false" aria-controls="submenu3">Materiais</button>
+          <ul id="submenu3" class="submenu" aria-hidden="true">
+            <li><a href="#">Apostilas</a></li>
+            <li><a href="#">Apresentações</a></li>
+            <li><a href="#">Vídeos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo" tabindex="-1">
+      <div class="card" role="status">
+        <p><strong>Última Notícia:</strong> 1ª Avaliação Parcial - 30/09/2025 18:51</p>
+        <p>Prezada turma, boa noite.<br>
+        Apenas para lembrá-los da nossa 1ª AP amanhã, dia 01/10.<br>
+        Cordialmente, Profa. Lígia.</p>
+      </div>
+
+      <div class="card">
+        <h3>Apresentação da Disciplina (28/07/2025)</h3>
+        <a href="#">📄 Aula1_ApresentacaoDisciplina_ControleServo.pdf</a>
+      </div>
+
+      <div class="card">
+        <h3>Introdução aos Sistemas de Controle (30/07/2025)</h3>
+        <a href="#">📄 Aula1_IntroSistemasControle.pdf</a>
+      </div>
+
+      <div class="card">
+        <h3>Modelagem matemática de sistemas de controle (04/08/2025 - 06/08/2025)</h3>
+        <a href="#">📄 Aula2_ModelagemMatemSistControleEditado.pdf</a>
+      </div>
+
+      <div class="card">
+        <h3>Resposta transitória e estacionária (11/08/2025 - 27/08/2025)</h3>
+        <a href="#">📄 Aula4_AnaliseRespTransitoriaERegEstacionario.pdf</a>
+      </div>
+    </main>
+
+    <!-- Menu direito -->
+    <aside id="menuDireito" role="complementary" aria-label="Menu Lateral Direito" aria-hidden="true">
+      <h2>Notícias</h2>
+      <ul>
+        <li>30/09/2025 18:51 - 1ª Avaliação Parcial</li>
+        <li>11/08/2025 13:07 - Aula 11/08</li>
+      </ul>
+
+      <h2>Enquete</h2>
+      <p>Nenhuma enquete encontrada</p>
+
+      <h2>Atividades</h2>
+      <ul>
+        <li>30/09 Nova Notícia: 1ª Avaliação Parcial</li>
+        <li>11/08 Nova Notícia: Aula 11/08</li>
+      </ul>
+
+      <h2>Avaliações</h2>
+      <p>Nenhuma avaliação cadastrada</p>
+    </aside>
+  </div>
+
+  <!-- Botão para abrir/fechar menu direito -->
+  <button id="toggleMenu" class="menu-toggle" aria-controls="menuDireito" aria-expanded="false">
+    Abrir Menu
+  </button>
+
+  <script src="vtnsc5.js"></script>
+</body>
+</html>
