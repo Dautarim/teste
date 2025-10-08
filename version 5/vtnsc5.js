@@ -1,69 +1,266 @@
-// Garante foco inicial e controle de menus
-window.addEventListener("DOMContentLoaded", () => {
-  const principalLink = document.getElementById("link-principal");
-  if (principalLink) principalLink.focus();
+/* vtnsc.js */
+(function () {
+  // elementos principais
+  const nav = document.querySelector("nav[aria-label]");
+  const header = document.querySelector('header[role="banner"]');
+  const subHeader = document.querySelector(".sub-header");
+  const conteudo = document.getElementById("conteudo");
+  const srAnnouncer = document.getElementById("sr-announcer");
+  let status = document.querySelector(".status")
+  let clsocultarheader = document.querySelector(".ocultar-header")
+  let ocultarheader = document.querySelector(".ocultar-header").addEventListener("click", ()=>{
+    document.querySelector(".sub-header").classList.toggle("visivel")
+    clsocultarheader.classList.toggle("troca")
+  })
+  let btnAbreStatus = status.querySelector("i").addEventListener("click",()=>{
+    status.classList.toggle("expandido") 
+    document.querySelector("#titulo").classList.toggle("desliga")
+    })
+  const menuturmavirtual = document.querySelector("nav h2").addEventListener("click", ()=> { nav.classList.toggle("expandir") })
 
-  // Submenus do menu esquerdo - apenas um aberto por vez
-  document.querySelectorAll("nav button").forEach(btn => {
+  // guarda conteúdo inicial pra restaurar quando clicar "Principal"
+  let initialContent = conteudo ? conteudo.innerHTML : "";
+
+  // ajusta max-height do nav (dinâmico)
+  function setNavMaxHeight() {
+    if (!nav || !header || !subHeader || window.innerWidth > 900) return;
+    const h = window.innerHeight - header.offsetHeight - subHeader.offsetHeight - 48;
+    nav.style.maxHeight = (h > 200 ? h : 200) + "px"; }
+
+  setNavMaxHeight();
+  window.addEventListener("resize", setNavMaxHeight);
+  window.addEventListener("load", () => setTimeout(setNavMaxHeight, 120));
+
+  // menu comportamentos (só 1 submenu aberto)
+  const menuButtons = Array.from(document.querySelectorAll("nav .menu-btn[aria-controls]"));
+  function closeAllExcept(exceptBtn) {
+    menuButtons.forEach((btn) => {
+      if (btn !== exceptBtn) {
+        btn.setAttribute("aria-expanded", "false");
+        const ctrl = btn.getAttribute("aria-controls");
+        if (ctrl) {
+          const el = document.getElementById(ctrl);
+          if (el) el.setAttribute("aria-hidden", "true");
+        }
+      }
+    });
+  }
+
+  menuButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      document.querySelectorAll("nav button").forEach(b => {
-        b.setAttribute("aria-expanded", "false");
-        document.getElementById(b.getAttribute("aria-controls")).setAttribute("aria-hidden", "true");
-      });
-      btn.setAttribute("aria-expanded", !expanded);
-      document.getElementById(btn.getAttribute("aria-controls")).setAttribute("aria-hidden", expanded ? "true" : "false");
+      const isExpanded = btn.getAttribute("aria-expanded") === "true";
+      closeAllExcept(btn);
+      btn.setAttribute("aria-expanded", String(!isExpanded));
+      const ctrl = btn.getAttribute("aria-controls");
+      if (ctrl) {
+        const el = document.getElementById(ctrl);
+        if (el) {
+          el.setAttribute("aria-hidden", String(isExpanded));
+          if (!isExpanded) {
+            // rola o submenu pra ficar visível dentro do nav
+            setTimeout(()=> el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
+          }
+        }
+      }
+    });
+
+    // keyboard helpers
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        btn.setAttribute("aria-expanded", "false");
+        const ctrl = btn.getAttribute("aria-controls");
+        if (ctrl) { const el = document.getElementById(ctrl); if (el) el.setAttribute("aria-hidden", "true"); }
+        btn.focus();
+      }
+      if ((e.key === "ArrowDown" || e.key === "Down") && btn.getAttribute("aria-expanded") === "false") {
+        e.preventDefault();
+        btn.click();
+        const ctrl = btn.getAttribute("aria-controls");
+        const el = ctrl ? document.getElementById(ctrl) : null;
+        if (el) {
+          const firstLink = el.querySelector("a, button");
+          if (firstLink) firstLink.focus();
+        }
+      }
     });
   });
 
-  // Menu lateral direito
-  const toggleBtn = document.getElementById("toggleMenu");
-  const menuDireito = document.getElementById("menuDireito");
-  toggleBtn.addEventListener("click", () => {
-    const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
-    toggleBtn.setAttribute("aria-expanded", !expanded);
-    menuDireito.setAttribute("aria-hidden", expanded);
-    toggleBtn.textContent = expanded ? "Abrir Menu" : "Fechar Menu";
+  // fecha submenus ao clicar fora
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("nav")) closeAllExcept(null);
   });
 
-  // Conteúdo dinâmico
-  const conteudo = document.getElementById("conteudo");
-  const initialContent = conteudo.innerHTML;
+  // menu direito toggle
+  const toggleBtn = document.getElementById("toggleMenu");
+  const menuDireito = document.getElementById("menuDireito");
+  if (toggleBtn && menuDireito) {
+    toggleBtn.addEventListener("click", () => {
+      const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+      toggleBtn.setAttribute("aria-expanded", String(!expanded));
+      menuDireito.setAttribute("aria-hidden", String(expanded));
+      toggleBtn.innerHTML = expanded ? `<i class="ph ph-caret-circle-left"></i>` : `<i class="ph ph-x-circle"></i>`;
+    });
+  }
 
-  const linkTarefas = document.getElementById("link-tarefas");
-  if (linkTarefas) {
-    linkTarefas.addEventListener("click", e => {
+  // Skip link focus handling
+  const skip = document.querySelector(".skip-link");
+  if (skip && conteudo) {
+    skip.addEventListener("click", () => {
+      setTimeout(() => conteudo && conteudo.focus(), 50);
+    });
+  }
+
+  // Focus inicial: colocar foco no "Principal" do menu (acessível)
+  // window.addEventListener("DOMContentLoaded", () => {
+  //   const linkPrincipal = document.getElementById("link-principal");
+  //   if (linkPrincipal) {
+  //     // foco programático (não usar autofocus HTML)
+  //     linkPrincipal.focus();
+  //   }
+  // });
+
+  // =========================
+  // RESTAURAR CONTEÚDO (Principal)
+  // =========================
+  const linkPrincipal = document.getElementById("link-principal");
+  if (linkPrincipal && conteudo) {
+    linkPrincipal.addEventListener("click", (e) => {
       e.preventDefault();
+      // fade out -> replace -> fade in
+      conteudo.classList.add("fade-out");
+      setTimeout(() => {
+        conteudo.innerHTML = initialContent;
+        conteudo.classList.remove("fade-out");
+        conteudo.classList.add("fade-in");
+        // re-establish focus and announce
+        conteudo.setAttribute("aria-live", "polite");
+        setTimeout(()=> {
+          conteudo.focus();
+          announceSR("Conteúdo Principal restaurado.");
+          // remove fade-in after animation
+          setTimeout(()=> conteudo.classList.remove("fade-in"), 300);
+        }, 120);
+      }, 160);
+    });
+  }
+
+  // helper para anunciar ao SR
+  function announceSR(text) {
+    if (!srAnnouncer) return;
+    srAnnouncer.textContent = '';
+    // small delay to force announcement
+    setTimeout(()=> { srAnnouncer.textContent = text; }, 50);
+  }
+
+  // =========================
+  // TROCA DE CONTEÚDO: TAREFAS
+  // =========================
+  const linkTarefas = document.getElementById("link-tarefas");
+  if (linkTarefas && conteudo) {
+    linkTarefas.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // fade out
       conteudo.classList.add("fade-out");
 
       setTimeout(() => {
-        conteudo.innerHTML = `
-          <div class="card">
-            <h3>Tarefas Disponíveis</h3>
-            <ul>
-              <li>📄 Enviar Relatório de Controle – até 10/10/2025</li>
-              <li>📄 Revisar Exercício de Modelagem – até 15/10/2025</li>
-            </ul>
-            <a href="#" id="voltar-principal">⬅ Voltar</a>
-          </div>`;
+        // limpa
+        conteudo.innerHTML = "";
+
+        // titulo (focável)
+        const titulo = document.createElement("h2");
+        titulo.textContent = "Tarefas - Controle e Servomecanismo";
+        titulo.style.color = "var(--blue)";
+        titulo.style.marginBottom = "1rem";
+        conteudo.appendChild(titulo);
+
+        // listas de tarefas (exemplo)
+        const tarefas = [
+          {
+            nome: "Tarefa 1 - Diagrama de Blocos",
+            descricao: "Monte o diagrama de blocos de um sistema de controle de posição utilizando realimentação unitária.",
+          },
+          {
+            nome: "Tarefa 2 - Resposta ao Degrau",
+            descricao: "Analise a resposta ao degrau de um sistema de segunda ordem e discuta o impacto da variação do fator de amortecimento.",
+          },
+          {
+            nome: "Tarefa 3 - Projeto de Controlador PID",
+            descricao: "Projete e simule um controlador PID para o sistema de controle de velocidade de um motor DC.",
+          }
+        ];
+
+        tarefas.forEach((tarefa, i) => {
+          const card = document.createElement("article");
+          card.className = "tarefa-card";
+          card.innerHTML = `
+            <div class="aula"><h3>${tarefa.nome}</h3></div>
+            <p>${tarefa.descricao}</p>
+            <div class="botoes-tarefa">
+              <button type="button" class="btn-submeter" data-tarefa="${i}" aria-label="Submeter ${tarefa.nome}">
+                <i class="ph-fill ph-check-circle" aria-hidden="true"></i> Submeter
+              </button>
+              <label class="btn-arquivo" for="arquivo-${i}" tabindex="0">
+                <i class="ph-fill ph-upload-simple" aria-hidden="true"></i> Enviar arquivo
+              </label>
+              <input type="file" id="arquivo-${i}" class="input-arquivo" aria-label="Escolher arquivo para ${tarefa.nome}" />
+            </div>
+          `;
+          conteudo.appendChild(card);
+        });
+
+        // adiciona botão "Voltar" acessível (restaurar principal)
+        const voltar = document.createElement("p");
+        voltar.style.marginTop = "1rem";
+        voltar.innerHTML = `<a href="#" id="voltar-principal" class="bot-alterar-vinculo">Voltar para Principal</a>`;
+        conteudo.appendChild(voltar);
+
+        // fade in
         conteudo.classList.remove("fade-out");
         conteudo.classList.add("fade-in");
-        conteudo.focus();
 
+        // foco e anuncio pra leitor de tela
+        setTimeout(()=> {
+          titulo.focus();
+          announceSR("Tela de tarefas carregada. Três tarefas listadas.");
+        }, 120);
+
+        // attach handlers for submit and file inputs
+        const submitButtons = Array.from(document.querySelectorAll(".btn-submeter"));
+        submitButtons.forEach(btn => {
+          btn.addEventListener("click", (ev) => {
+            const idx = btn.getAttribute("data-tarefa");
+            announceSR(`Tarefa ${Number(idx)+1} submetida (simulação).`);
+            // feedback visual simples
+            btn.textContent = "Enviado";
+            btn.disabled = true;
+            btn.style.opacity = ".8";
+          });
+        });
+
+        const fileInputs = Array.from(document.querySelectorAll(".input-arquivo"));
+        fileInputs.forEach(input => {
+          input.addEventListener("change", (ev) => {
+            const file = input.files && input.files[0];
+            if (file) announceSR(`Arquivo ${file.name} selecionado para upload.`);
+          });
+        });
+
+        // Voltar para principal
         const voltarLink = document.getElementById("voltar-principal");
         if (voltarLink) {
-          voltarLink.addEventListener("click", e2 => {
-            e2.preventDefault();
-            conteudo.classList.add("fade-out");
-            setTimeout(() => {
-              conteudo.innerHTML = initialContent;
-              conteudo.classList.remove("fade-out");
-              conteudo.classList.add("fade-in");
-              conteudo.focus();
-            }, 250);
+          voltarLink.addEventListener("click", (ev) => {
+            ev.preventDefault();
+            // restaurar via clique do link principal
+            if (linkPrincipal) linkPrincipal.click();
           });
         }
-      }, 200);
+
+        // limpa fade-in depois
+        setTimeout(()=> conteudo.classList.remove("fade-in"), 500);
+      }, 180);
     });
   }
-});
+
+})();
+
