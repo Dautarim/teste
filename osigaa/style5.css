@@ -1,6 +1,8 @@
 /* reset simples */
 * {
   box-sizing: border-box;
+  /* word-spacing: 0.16rem;
+  letter-spacing: 0.10rem; */
 }
 
 /* visually-hidden for screen readers */
