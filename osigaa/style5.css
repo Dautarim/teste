@@ -309,13 +309,14 @@ main#conteudo {
 }
 
 .card {
-  background: #fff;
+  background: var(--blue);
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  color: white;
   gap: 16px;
 }
 .card .aula,
@@ -350,6 +351,7 @@ main#conteudo {
 .card.noticias {
   background: var(--yellow);
   text-align: center;
+  color: var(--blue);
 }
 
 /* tarefas styles */
@@ -458,6 +460,10 @@ aside#menuDireito[aria-hidden="false"] {
   opacity: 1;
   transition: opacity .25s ease-out;
 }
+
+    nav h2:focus {
+        outline: 2px solid white;
+    }
 
 /* responsividade */
 @media (max-width:1040px) {
