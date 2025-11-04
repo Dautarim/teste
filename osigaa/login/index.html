@@ -19,8 +19,8 @@
 
 <main id="maincontent">
     <section class="alerta" aria-label="Aviso de segurança">
-        <strong>ATENÇÃO!</strong>
-        <p>O sistema diferencia letras maiúsculas e minúsculas APENAS na senha.</p>
+        <strong>ATENÇÃO:</strong>
+        <p>O sistema diferencia letras maiúsculas de minúsculas APENAS na senha, portanto ela deve ser digitada da mesma maneira que no cadastro.</p>
     </section>
 
     <section class="form-container">
@@ -38,16 +38,18 @@
 
                 <button type="submit">Entrar</button>
 
-                <p id="help-text" class="help">
-                    Esqueceu a senha? <a href="#">Clique aqui para recuperar</a>.
-                </p>
+                <p id="help-text" class="help"> <a href="#">Recuperar a Senha</a> </p>
+                <p id="help-text" class="help"> <a href="#">Recuperar o Login</a> </p>
+                <p id="help-text" class="help"> <a href="#">Recuperar código de autorização</a> </p>
+
             </fieldset>
         </form>
     </section>
 
     <nav aria-label="Seleção de Sistemas" class="system-nav">
+        <h2>Sistemas:</h2>
         <ul>
-            <li><a href="#" aria-current="page">SIGAA<br><span class="sub">Acadêmico</span></a></li>
+            <li><a href="#" aria-current="page" class="atual">SIGAA<br><span class="sub">Acadêmico</span></a></li>
             <li><a href="#">SIPAC<br><span class="sub">Administrativo</span></a></li>
             <li><a href="#">SIGRH<br><span class="sub">Recursos Humanos</span></a></li>
             <li><a href="#">SIGAdmin<br><span class="sub">Administração e Comunicação</span></a></li>
@@ -55,10 +57,19 @@
         </ul>
     </nav>
 
+    <nav aria-label="Cadastros" class="register-nav">
+        <ul>
+            <li> <a href="#">Cadastre-se como <strong>Servidor</strong> </a></li>
+            <li> <a href="#">Cadastre-se como <strong>Aluno</strong> </a></li>
+            <li> <a href="#">Cadastre-se como <strong>Familiares</strong></a> </li>
+        </ul>
+    </nav>
+    
+
 </main>
 
 <footer id="footer" role="contentinfo">
-    <p>SIGAA | Diretoria de Tecnologia da Informação — © 2025</p>
+    <p>SIGAA UNILAB| Por Dautarim — © 2025</p>
 </footer>
 
 <script src="script.js"></script>
