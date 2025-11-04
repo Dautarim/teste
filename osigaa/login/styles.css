@@ -1,0 +1,122 @@
+:root {
+    --primary: #1A4A8C;
+    --secondary: #e6eefc;
+    --text: #000;
+    --focus: #ffcc00;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f6f6;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.skip-links {
+    position: absolute;
+    left: -999px;
+    top: -999px;
+}
+
+.skip-links a:focus {
+    position: static;
+    background: var(--focus);
+    padding: 10px;
+    z-index: 999;
+}
+
+.top-bar {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.alerta {
+    text-align: center;
+    padding: 10px;
+    background: #fff3cd;
+    border-bottom: 1px solid #ffec99;
+}
+
+.system-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.system-nav a {
+    display: block;
+    padding: 10px 15px;
+    background: var(--secondary);
+    color: var(--text);
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.system-nav a:focus,
+.system-nav a:hover {
+    outline: 3px solid var(--focus);
+    background: #dce7fb;
+}
+
+.form-container {
+    max-width: 350px;
+    margin: auto;
+    background: #fff;
+    border: 2px solid var(--primary);
+    padding: 20px;
+    border-radius: 6px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: 3px solid var(--focus);
+}
+
+button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:focus,
+button:hover {
+    outline: 3px solid var(--focus);
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    background: var(--secondary);
+    padding: 15px 10px;
+}
+

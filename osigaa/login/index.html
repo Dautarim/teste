@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGAA - Login Acessível</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<ul class="skip-links">
+    <li><a href="#login">Ir direto ao formulário</a></li>
+    <li><a href="#footer">Ir ao rodapé</a></li>
+</ul>
+
+<header role="banner" class="top-bar">
+    <h1><span class="bold">UNILAB - SIGAA</span> - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
+</header>
+
+<main id="maincontent">
+    <section class="alerta" aria-label="Aviso de segurança">
+        <strong>ATENÇÃO!</strong>
+        <p>O sistema diferencia letras maiúsculas e minúsculas APENAS na senha.</p>
+    </section>
+
+    <section class="form-container">
+        <h2 id="login">Entrar no Sistema</h2>
+
+        <form role="form" aria-describedby="help-text">
+            <fieldset>
+                <legend>Identificação do usuário</legend>
+
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" autocomplete="username" required>
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" autocomplete="current-password" required>
+
+                <button type="submit">Entrar</button>
+
+                <p id="help-text" class="help">
+                    Esqueceu a senha? <a href="#">Clique aqui para recuperar</a>.
+                </p>
+            </fieldset>
+        </form>
+    </section>
+
+    <nav aria-label="Seleção de Sistemas" class="system-nav">
+        <ul>
+            <li><a href="#" aria-current="page">SIGAA<br><span class="sub">Acadêmico</span></a></li>
+            <li><a href="#">SIPAC<br><span class="sub">Administrativo</span></a></li>
+            <li><a href="#">SIGRH<br><span class="sub">Recursos Humanos</span></a></li>
+            <li><a href="#">SIGAdmin<br><span class="sub">Administração e Comunicação</span></a></li>
+            <li><a href="#">MOODLE<br><span class="sub">Ambiente Virtual</span></a></li>
+        </ul>
+    </nav>
+
+</main>
+
+<footer id="footer" role="contentinfo">
+    <p>SIGAA | Diretoria de Tecnologia da Informação — © 2025</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
