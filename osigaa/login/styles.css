@@ -1,6 +1,6 @@
 :root {
     --primary: #1A4A8C;
-    --secondary: #e6eefc;
+    --secondary: #d8e4ff;
     --text: #000;
     --focus1: #FFFFE4;
     --focus: #ffcc00;
@@ -8,6 +8,7 @@
 
 * {
     box-sizing: border-box;
+    letter-spacing: .12rem;
 }
 
 body {
@@ -24,11 +25,16 @@ body {
     top: -999px;
 }
 
-.skip-links a:focus {
+.skip-links a:focus-visible {
     position: static;
     background: var(--focus);
     padding: 10px;
     z-index: 999;
+}
+
+#login:focus-visible {
+  outline: 3px dashed var(--focus);
+  outline-offset: 4px;
 }
 
 .top-bar {
@@ -51,7 +57,7 @@ h1{
 }
 
 .alerta strong{
-    color: red;
+    color: #d10000;
 }
 .alerta p{
     display: inline;
@@ -93,11 +99,14 @@ h1{
 }
 
 
-.system-nav a:focus,
+
+fieldset p a:hover,
+fieldset p a:focus-visible,
+.system-nav a:focus-visible,
 .system-nav a:hover {
-    outline: 3px solid var(--focus);
     background: #dce7fb;
-}
+    outline: 3px solid var(--focus); }
+
 .register-nav
 {
     margin: 20px 0;
@@ -115,13 +124,13 @@ h1{
 .register-nav ul li a{
     text-decoration: none;
     padding: .5em 1em;
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 4px;
     color: var(--text);
     transition: .3s ease;
 }
 
-.register-nav ul li a:focus,
+.register-nav ul li a:focus-visible,
 .register-nav ul li a:hover{
     color: var(--secondary);
     background: var(--primary);
@@ -162,7 +171,7 @@ input {
     border-radius: 4px;
 }
 
-input:focus {
+input:focus-visible{
     outline: 3px solid var(--focus);
 }
 
@@ -178,7 +187,7 @@ button {
     cursor: pointer;
 }
 
-button:focus,
+button:focus-visible,
 button:hover {
     outline: 3px solid var(--focus);
 }
@@ -206,7 +215,11 @@ footer {
     h2 { margin-block: .5em }
 
     fieldset p{ margin-block: .5em }
-    fieldset p a { font-size: .8em }
+    fieldset p a { 
+        border-radius: 4px;
+        font-size: .8em;
+        transition: 3s ease;
+    }
 
     .system-nav a { font-size: .9em}
 
