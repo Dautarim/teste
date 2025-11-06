@@ -21,9 +21,8 @@
     </div>
 
     <div class="header-controls" role="navigation" aria-label="Controles de usuário">
-      <button id="contrastToggle" aria-pressed="false">A+/A-</button>
       <span class="session">Tempo de Sessão: <strong id="sessionTimer">00:30</strong></span>
-      <a href="#" class="link-logout">SAIR</a>
+      <a href="../login/index.html" class="link-logout">SAIR</a>
     </div>
   </header>
 
@@ -62,10 +61,10 @@
         <h2 id="turmasTitle">Turmas do Semestre</h2>
 
         <table class="table" aria-describedby="turmasDesc">
-          <caption id="turmasDesc">Últimas atualizações e componente curricular</caption>
+          <caption id="turmasDesc">Atualizações dos componentes curriculares</caption>
           <thead>
             <tr>
-              <th scope="col">Últimas Atualizações</th>
+              <th scope="col">Última Atualização</th>
               <th scope="col">Componente Curricular</th>
               <th scope="col">Local</th>
               <th scope="col">Horário</th>
@@ -73,8 +72,8 @@
           </thead>
           <tbody>
             <tr>
-              <td><time datetime="2025-08-11">11/08/2025</time> - Nova Notícia: Aula 11/08</td>
-              <td><a href="#" class="link">CONTROLE E SERVOMECANISMO</a></td>
+              <td id="atual"><time datetime="2025-08-11">11/08/2025</time> <span class="natualizacoes">3</span></td>
+              <td><a href="../disciplina/index.html" class="link">CONTROLE E SERVOMECANISMO</a></td>
               <td>Sala 225, Bloco C, Auroras</td>
               <td>24T12</td>
             </tr>

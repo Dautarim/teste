@@ -26,6 +26,12 @@ body {
   color: #111;
   line-height: 1.4;
 }
+h2{
+  text-align: center;
+  background: var(--accent);
+  border-radius: 8px;
+  color: var(--bg);
+}
 a {
   color: var(--accent2);
   text-decoration: none;
@@ -65,10 +71,12 @@ a:focus {
 .site-header {
   width: var(--max-width);
   background: var(--panel);
-  border-bottom: 4px solid var(--accent);
+  border: 2px solid var(--accent);
+  border-top: 0px;
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
+  border-radius: 0px 0px 8px 8px;
   margin: auto;
   justify-content: space-between;
 }
@@ -113,7 +121,7 @@ a:focus {
 .top-menu ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 12px;
+  gap: 6px;
   list-style: none;
   margin: 0;
   padding: 0.5rem 1rem;
@@ -158,7 +166,13 @@ a:focus {
   border-radius: 6px;
 }
 .destaque h2 {
-  margin: 0 0 0.5rem 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-top: 0;
+  padding: 10px;
+  font-size: 1.2em;
+  color: var(--accent);
 }
 .actions {
   margin-top: 0.5rem;
@@ -188,6 +202,7 @@ a:focus {
 .table caption {
   caption-side: top;
   text-align: left;
+  font-size: .9em;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -197,8 +212,20 @@ a:focus {
   padding: 0.55rem 0.6rem;
   text-align: left;
 }
+
+.table td#atual{
+  font-weight: 600;
+}
+
+.table td#atual span{
+  padding: 4px;
+  background: var(--sair);
+  border-radius: 4px;
+  color: var(--bg);
+  font-size: .9em;
+}
 .table thead th {
-  background: #eef4ff;
+  background: #9fbef3;
   font-weight: 700;
 }
 
