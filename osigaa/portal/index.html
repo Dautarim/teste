@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SIGAA - Portal do Discente (Acessível)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip links -->
+  <a class="skip-link" href="#main" id="skipMain">Pular para o conteúdo</a>
+  <a class="skip-link" href="#sidebar" id="skipSidebar">Pular para o painel</a>
+
+  <header role="banner" class="site-header">
+    <div class="header-top">
+      <img src="logo.png" alt="UNILAB - SIGAA" class="logo" />
+      <div class="headline">
+        <div class="title">UNILAB - SIGAA</div>
+        <div class="subtitle">Sistema Integrado de Gestão de Atividades Acadêmicas</div>
+      </div>
+    </div>
+
+    <div class="header-controls" role="navigation" aria-label="Controles de usuário">
+      <button id="contrastToggle" aria-pressed="false">A+/A-</button>
+      <span class="session">Tempo de Sessão: <strong id="sessionTimer">00:30</strong></span>
+      <a href="#" class="link-logout">SAIR</a>
+    </div>
+  </header>
+
+  <nav class="top-menu" role="navigation" aria-label="Menu principal">
+    <ul>
+      <li><a href="#" class="menu-item">Ensino</a></li>
+      <li><a href="#" class="menu-item">Pesquisa</a></li>
+      <li><a href="#" class="menu-item">Extensão</a></li>
+      <li><a href="#" class="menu-item">Monitoria</a></li>
+      <li><a href="#" class="menu-item">Biblioteca</a></li>
+      <li><a href="#" class="menu-item">Ambientes Virtuais</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrap">
+    <main id="main" role="main" tabindex="-1" aria-label="Conteúdo principal">
+      <!-- Destaque / notícia -->
+      <section class="panel destaque" aria-labelledby="destaqueTitle">
+        <h2 id="destaqueTitle">Consulta sobre Disciplina Optativa para o semestre 2026-1 (Prof. Nicolas)</h2>
+        <p>
+          Car@s, neste semestre estou ministrando a cadeira Tópicos Especiais em Engenharia de Computação: Software, com o tema de Jogos Combinatórios...
+        </p>
+        <div class="actions">
+          <button class="btn small" data-action="prev" aria-label="Ir para notícia anterior">«</button>
+          <button class="btn small" data-action="next" aria-label="Ir para próxima notícia">»</button>
+          <button class="btn small" data-action="all" aria-label="Ver todas as notícias">Todas</button>
+        </div>
+      </section>
+
+      <!-- Turmas do semestre -->
+      <section class="panel turmas" aria-labelledby="turmasTitle">
+        <h2 id="turmasTitle">Turmas do Semestre</h2>
+
+        <table class="table" aria-describedby="turmasDesc">
+          <caption id="turmasDesc">Últimas atualizações e componente curricular</caption>
+          <thead>
+            <tr>
+              <th scope="col">Últimas Atualizações</th>
+              <th scope="col">Componente Curricular</th>
+              <th scope="col">Local</th>
+              <th scope="col">Horário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><time datetime="2025-08-11">11/08/2025</time> - Nova Notícia: Aula 11/08</td>
+              <td><a href="#" class="link">CONTROLE E SERVOMECANISMO</a></td>
+              <td>Sala 225, Bloco C, Auroras</td>
+              <td>24T12</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+      <!-- Comunidades e atividades -->
+      <section class="panel atividades" aria-labelledby="atividadesTitle">
+        <h2 id="atividadesTitle">Minhas Atividades</h2>
+        <p class="muted">Não há atividades cadastradas para os próximos 15 dias ou decorridos 7 dias.</p>
+      </section>
+
+      <!-- Fórum -->
+      <section class="panel forum" aria-labelledby="forumTitle">
+        <h2 id="forumTitle">Fórum do Curso de Engenharia da Computação</h2>
+        <div class="notice">
+          <strong>Caro Aluno:</strong> este fórum é destinado para discussões relacionadas ao seu curso. Todos os alunos do curso e a coordenação têm acesso.
+        </div>
+
+        <div class="forum-actions">
+          <a href="#" class="link action" id="novo-topico">Cadastrar novo tópico</a>
+          <a href="#" class="link action">Visualizar todos os tópicos</a>
+        </div>
+
+        <table class="table forum-table" aria-describedby="forumDesc" id="forumTable">
+          <caption id="forumDesc">Tópicos recentes do fórum</caption>
+          <thead>
+            <tr>
+              <th scope="col">Título</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Respostas</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#" class="link">Como fazer o vídeo de boa qualidade</a></td>
+              <td>bracia</td>
+              <td>0</td>
+              <td><time datetime="2024-11-08T14:54:40">08/11/2024 14:54:40</time></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Sidebar (perfil, links rápidos, indicadores) -->
+    <aside id="sidebar" class="sidebar" role="complementary" aria-labelledby="perfilTitle" tabindex="0">
+      <h2 id="perfilTitle">Painel do Discente</h2>
+
+      <div class="profile card" role="region" aria-label="Informações do estudante">
+        <img src="avatar.png" alt="Foto de Dautarim Osvaldo C. Andrelino" class="avatar" />
+        <div class="profile-info">
+          <p class="name"><strong>DAUTARIM OSVALDO C. ANDRELINO</strong></p>
+          <p class="small">Meu nome é Dautarim, a maioria me chama de VAVA.</p>
+          <a href="#" class="link">Atualizar Foto e Perfil</a>
+        </div>
+      </div>
+
+      <div class="card quick-links" role="navigation" aria-label="Links rápidos">
+        <ul>
+          <li><a href="#">Módulos</a></li>
+          <li><a href="#">Menu Discente</a></li>
+          <li><a href="#">Alterar senha</a></li>
+          <li><a href="#">Ajuda</a></li>
+        </ul>
+      </div>
+
+      <div class="card dados-institucionais" role="region" aria-labelledby="dadosTitle">
+        <h3 id="dadosTitle">Dados Institucionais</h3>
+        <dl>
+          <dt>Matrícula</dt><dd>2020106056</dd>
+          <dt>Curso</dt><dd>ENGENHARIA DE COMPUTAÇÃO / IEDS</dd>
+          <dt>Nível</dt><dd>GRADUAÇÃO</dd>
+          <dt>Status</dt><dd>FORMANDO</dd>
+          <dt>E-mail</dt><dd>carvalhoandrelino@unilab.edu.br</dd>
+          <dt>Entrada</dt><dd>2020.1</dd>
+        </dl>
+      </div>
+
+      <div class="card indicadores" role="region" aria-labelledby="indicadoresTitle">
+        <h3 id="indicadoresTitle">Índices Acadêmicos</h3>
+        <ul>
+          <li>MC: 7.8645</li>
+          <li>IRA: 7.1244</li>
+          <li>IEA: 5.7444</li>
+        </ul>
+        <a href="#" class="link small">Detalhar</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer role="contentinfo" class="site-footer">
+    <div class="footer-inner">
+      <p>SIGAA | Diretoria de Tecnologia da Informação − © 2006-2025 - UNILAB</p>
+    </div>
+  </footer>
+
+  <!-- Live region for announcements -->
+  <div id="liveAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
