@@ -153,8 +153,8 @@ a:focus {
   max-width: var(--max-width);
   margin: 1.25rem auto;
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 1.25rem;
+  grid-template-columns: 1fr 340px;
+  gap: .5rem;
   padding: 0 1rem;
 }
 
@@ -267,16 +267,14 @@ a:focus {
   border: 2px solid var(--accent);
   padding: 4px 12px;
   color: var(--accent);
-  border-radius: 8px;
-  transition: .3s ease; }
+  border-radius: 8px;}
 
 .forum-actions a:hover,
 .profile-actions a:hover{
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent2);
   padding: 4px 12px;
   color: var(--bg);
   background: var(--accent2);
-  transition: .3s ease;
 }
 .card {
   background: var(--panel);
@@ -300,16 +298,14 @@ a:focus {
   padding: 4px 12px;
   border-radius: 4px;
   background: var(--accent2);
+  text-align: center;
 }
 
 .card.quick-links ul li a{
   color: var(--bg);
   font-size: .9em;
-
 }
-.card.quick-links h2{
-  font-size: .9em;
-}
+.card.quick-links h2{ font-size: .9em; }
 
 .profile {
   display: flex;
@@ -326,12 +322,21 @@ a:focus {
   object-fit: cover;
   border: 2px solid var(--accent);
 }
-.profile-info .name {
-  font-weight: 700;
-}
+.profile-info .name { font-weight: 700; }
+
 .profile-info .small {
   font-size: 0.9rem;
   color: var(--muted);
+}
+.card.dados-institucionais{ padding: .25em; margin-bottom: 0;}
+.card.dados-institucionais caption{ text-align: center;}
+.table.ddinst{ font-size: .9em;}
+.table.ddinst tr td:nth-child(1){ text-align: left; }
+
+.table.ddinst th,
+.table.ddinst td{
+  padding: .5em;
+  text-align: center;
 }
 
 /* dados */
@@ -342,8 +347,7 @@ a:focus {
   font-weight: 700;
 }
 .dados dd {
-  margin: 0 0 0.5rem 42%;
-}
+  margin: 0 0 0.5rem 42%; }
 
 /* footer */
 .site-footer {
