@@ -112,6 +112,31 @@ a:focus {
 }
 
 /* top menu */
+/* Botão do menu sanduíche */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 90%;
+  left: 91%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  z-index: 199;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-toggle i{
+  font-size: 1rem;
+}
+
+.menu-toggle:focus-visible {
+  outline: 3px solid var(--focus);
+}
+
 .top-menu {
   position: relative;
   width: var(--max-width);
@@ -119,7 +144,6 @@ a:focus {
   border-radius: 8px;
   margin: auto;
   border-bottom: 1px solid var(--border);
-  transition: .3s ease-in-out;
 }
 .top-menu ul {
   display: grid;
@@ -383,9 +407,32 @@ a:focus {
 }
 
 @media (max-width: 963px) {
+
+  .top-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--secondary);
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    padding: 10px;
+    z-index: 99;
+  }
+
+  .top-menu.ativo {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
   .page-wrap {
-    grid-template-columns: 1fr;
-    padding: 0 0.6rem;
+    display: flex;
+    flex-direction: column;
+    padding: 9px;
   }
   .sidebar {
     order: 2;
@@ -401,8 +448,16 @@ a:focus {
   }
 }
 
+@media (max-width: 666px) {
+  .header-controls { display: none; }
+  .menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 90%;}
+}
+
 /* mobile - botões maiores and input bigger for touch per ABNT */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .btn,
   .link.action {
     padding: 1rem;
@@ -415,7 +470,51 @@ a:focus {
   .top-menu ul {
     justify-content: center;
   }
-  .header-controls .link-logout {
-    padding: 0.5rem 0.85rem;
-  }
+  .header-controls .link-logout { padding: 0.5rem 0.85rem; }
+
+  .menu-toggle {
+        top: 19px;
+        left: 86%;
+    }
+
+  .sidebar h2, 
+  .destaque h2 { font-size: 1em; }
+
+h2{
+  font-size: .8rem;
+  padding-block: 4px;}
+
+.panel { padding: 3px; }
+.panel p{ font-size: .9rem; }
+
+.top-menu .menu-item { font-size: .6rem;}
+
+.top-menu ul {
+  display: grid;
+  grid-template-columns: auto auto;}
+
+.table caption {font-size: .8rem;}
+
+.table th, 
+.table td { padding: 0.3rem;
+        font-size: .46rem; }
+
+.card.quick-links ul li a,
+.profile-info .small,
+.btn, 
+.link.action,
+.headline .subtitle,
+#forumTitle,
+.notice{ font-size: .6rem }
+
+.headline .title { font-size: 0.8em; }
+
+.btn, .link.action { padding: 4px 8px;}
+
+.forum-actions{
+      align-items: center;
+      justify-content: center; }
+
+.profile-actions a { font-size: .9rem; }
+
 }

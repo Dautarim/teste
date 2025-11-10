@@ -1,5 +1,24 @@
 // script.js - comportamentos acessíveis mínimos
 
+// Menu sanduíche acessível
+const btnMenu = document.getElementById("btnMenu");
+const topMenu = document.querySelector(".top-menu");
+
+if (btnMenu && topMenu) {
+  btnMenu.addEventListener("click", () => {
+    
+    const expanded = btnMenu.getAttribute("aria-expanded") === "true";
+    btnMenu.setAttribute("aria-expanded", String(!expanded));
+    topMenu.classList.toggle("ativo");
+
+    // feedback para leitores de tela
+    const announcer = document.getElementById("liveAnnouncer");
+    if (announcer) {
+      announcer.textContent = expanded ? "Menu principal fechado" : "Menu principal aberto";
+    }
+  });
+}
+
 // small helper: announce to SR live region
 function announce(text){
   const sr = document.getElementById('liveAnnouncer');
@@ -52,3 +71,6 @@ document.querySelectorAll('.forum-table tbody tr').forEach(row=>{
     }
   });
 });
+
+
+
