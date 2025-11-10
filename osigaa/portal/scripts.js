@@ -73,5 +73,5 @@ document.querySelectorAll('.forum-table tbody tr').forEach(row=>{
 });
 
 
-
+document.querySelector(".header-top").addEventListener("click", ()=> window.location.href = "../login/index.html")
 
