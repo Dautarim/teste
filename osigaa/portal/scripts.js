@@ -74,3 +74,4 @@ document.querySelectorAll('.forum-table tbody tr').forEach(row=>{
 
 
 
+
