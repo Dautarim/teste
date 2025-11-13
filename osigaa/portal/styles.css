@@ -110,7 +110,9 @@ a:focus {
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
 }
-
+tr:focus {
+  outline: none;
+}
 /* top menu */
 /* Botão do menu sanduíche */
 .menu-toggle {
@@ -125,7 +127,6 @@ a:focus {
   z-index: 199;
   border-radius: 4px;
   cursor: pointer;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -165,6 +166,9 @@ a:focus {
 }
 
 .top-menu .menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid transparent;
   font-weight: 600;
   color: var(--bg);
@@ -217,7 +221,7 @@ a:focus {
 }
 .btn.small {
   padding: 0.25rem 0.45rem;
-  font-size: 0.95rem;
+  font-size:24px;
   margin-right: 0.25rem;
 }
 .muted {
@@ -404,6 +408,7 @@ a:focus {
   }
 
   .site-header { width: auto;}
+
 }
 
 @media (max-width: 963px) {
@@ -446,6 +451,8 @@ a:focus {
     margin: 0 auto;
     display: block;
   }
+  .btn.small {
+  font-size:.9rem; }
 }
 
 @media (max-width: 666px) {
